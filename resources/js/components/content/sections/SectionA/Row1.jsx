@@ -3,24 +3,24 @@ import React, { useState, useEffect } from "react";
 function Row1() {
     const items = [];
 
-    for (let i = 0; i < 20; i++) {
-        const gap1 = 279.8 + i * 5.2;
-        const gap2 = 279.7 + i * 5.2;
-        const gap3 = 280.1 + i * 5.2;
-        const gap4 = 281 + i * 5.2;
-        const gap5 = 283.3 + i * 5.2;
-        const gap6 = 284.2 + i * 5.2;
-        const gap7 = 284.5 + i * 5.2;
-        const gap8 = 284.1 + i * 5.2;
-        const gap9 = 284.4 + i * 5.2;
-        const gap10 = 284.6 + i * 5.2;
-        const gap11 = 284.3 + i * 5.2;
-        const gap12 = 283.8 + i * 5.2;
-        const gap13 = 282.2 + i * 5.2;
-        const gap14 = 280.5 + i * 5.2;
-        const gap15 = 279.9 + i * 5.2;
-        const gap16 = 280.2 + i * 5.2;
-        const gap17 = 282.1 + i * 5.2;
+    for (let i = 0; i < 22; i++) {
+        const gapRow1 = 279.8 + i * 5.2 - 10.4;
+        const gapRow2 = 279.7 + i * 5.2 - 10.4;
+        const gapRow3 = 280.1 + i * 5.2 - 10.4;
+        const gapRow4 = 281 + i * 5.2 - 10.4;
+        const gapRow5 = 283.3 + i * 5.2 - 10.4;
+        const gapRow6 = 284.2 + i * 5.2 - 10.4;
+        const gapRow7 = 284.5 + i * 5.2 - 10.4;
+        const gapRow8 = 284.1 + i * 5.2 - 10.4;
+        const gapRow9 = 284.4 + i * 5.2 - 10.4;
+        const gapRow10 = 284.6 + i * 5.2 - 10.4;
+        const gapRow11 = 284.3 + i * 5.2 - 10.4;
+        const gapRow12 = 283.8 + i * 5.2 - 10.4;
+        const gapRow13 = 282.2 + i * 5.2 - 10.4;
+        const gapRow14 = 280.5 + i * 5.2 - 10.4;
+        const gapRow15 = 279.9 + i * 5.2 - 10.4;
+        const gapRow16 = 280.2 + i * 5.2 - 10.4;
+        const gapRow17 = 282.1 + i * 5.2 - 10.4;
 
         const gapColumn1 = 404.5;
         const gapColumn2 = 402.8;
@@ -36,234 +36,237 @@ function Row1() {
         const gapColumn12 = 407.5;
         const gapColumn13 = 407;
         const gapColumn14 = 406.6;
-        items.push(
-            <g key={i} id="seat-3827" className="booth" section="1">
-                <polygon
-                    className="st6 booth-fill"
-                    fill="#FFFFFF"
-                    stroke="#000000"
-                    strokeWidth=".5"
-                    strokeMiterlimit="10"
-                    points={
-                        gap1 +
-                        "," +
-                        gapColumn1 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn2 +
-                        " " +
-                        gap3 +
-                        "," +
-                        gapColumn3 +
-                        " " +
-                        gap4 +
-                        "," +
-                        gapColumn4 +
-                        " " +
-                        gap5 +
-                        "," +
-                        gapColumn4 +
-                        " " +
-                        gap6 +
-                        "," +
-                        gapColumn3 +
-                        " " +
-                        gap7 +
-                        "," +
-                        gapColumn2 +
-                        " " +
-                        gap7 +
-                        "," +
-                        gapColumn5 +
-                        " " +
-                        gap6 +
-                        "," +
-                        gapColumn6 +
-                        " " +
-                        gap8 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap9 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap10 +
-                        "," +
-                        gapColumn8 +
-                        " " +
-                        gap10 +
-                        "," +
-                        gapColumn9 +
-                        " " +
-                        gap11 +
-                        "," +
-                        gapColumn10 +
-                        " " +
-                        gap12 +
-                        "," +
-                        gapColumn11 +
-                        " " +
-                        gap13 +
-                        "," +
-                        gapColumn12 +
-                        " " +
-                        gap14 +
-                        "," +
-                        gapColumn11 +
-                        " " +
-                        gap15 +
-                        "," +
-                        gapColumn10 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn13 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn8 +
-                        " " +
-                        gap15 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap16 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap3 +
-                        "," +
-                        gapColumn6
-                    }
-                    id="polygon12149"
-                />
-                <polygon
-                    className="st19"
-                    points={
-                        gap1 +
-                        "," +
-                        gapColumn1 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn2 +
-                        " " +
-                        gap3 +
-                        "," +
-                        gapColumn3 +
-                        " " +
-                        gap4 +
-                        "," +
-                        gapColumn4 +
-                        " " +
-                        gap5 +
-                        "," +
-                        gapColumn4 +
-                        " " +
-                        gap6 +
-                        "," +
-                        gapColumn3 +
-                        " " +
-                        gap7 +
-                        "," +
-                        gapColumn2 +
-                        " " +
-                        gap7 +
-                        "," +
-                        gapColumn5 +
-                        " " +
-                        gap6 +
-                        "," +
-                        gapColumn6 +
-                        " " +
-                        gap8 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap9 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap10 +
-                        "," +
-                        gapColumn8 +
-                        " " +
-                        gap10 +
-                        "," +
-                        gapColumn9 +
-                        " " +
-                        gap11 +
-                        "," +
-                        gapColumn10 +
-                        " " +
-                        gap12 +
-                        "," +
-                        gapColumn11 +
-                        " " +
-                        gap13 +
-                        "," +
-                        gapColumn12 +
-                        " " +
-                        gap14 +
-                        "," +
-                        gapColumn11 +
-                        " " +
-                        gap15 +
-                        "," +
-                        gapColumn10 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn13 +
-                        " " +
-                        gap2 +
-                        "," +
-                        gapColumn8 +
-                        " " +
-                        gap15 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap16 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap3 +
-                        "," +
-                        gapColumn6
-                    }
-                    id="polygon12151"
-                />
-                <polyline
-                    className="st20"
-                    points={
-                        gap8 +
-                        "," +
-                        gapColumn7 +
-                        " " +
-                        gap5 +
-                        "," +
-                        gapColumn8 +
-                        " " +
-                        gap17 +
-                        "," +
-                        gapColumn14 +
-                        " " +
-                        gap4 +
-                        "," +
-                        gapColumn14 +
-                        " " +
-                        gap16 +
-                        "," +
-                        gapColumn8 +
-                        " "
-                    }
-                    id="polyline12153"
-                />
-            </g>
-        );
+
+        if (i !== 10 && i !== 11) {
+            items.push(
+                <g key={i} id="seat-3827" className="booth" section="1">
+                    <polygon
+                        className="st6 booth-fill"
+                        fill="#FFFFFF"
+                        stroke="#000000"
+                        strokeWidth=".5"
+                        strokeMiterlimit="10"
+                        points={
+                            gapRow1 +
+                            "," +
+                            gapColumn1 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn2 +
+                            " " +
+                            gapRow3 +
+                            "," +
+                            gapColumn3 +
+                            " " +
+                            gapRow4 +
+                            "," +
+                            gapColumn4 +
+                            " " +
+                            gapRow5 +
+                            "," +
+                            gapColumn4 +
+                            " " +
+                            gapRow6 +
+                            "," +
+                            gapColumn3 +
+                            " " +
+                            gapRow7 +
+                            "," +
+                            gapColumn2 +
+                            " " +
+                            gapRow7 +
+                            "," +
+                            gapColumn5 +
+                            " " +
+                            gapRow6 +
+                            "," +
+                            gapColumn6 +
+                            " " +
+                            gapRow8 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow9 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow10 +
+                            "," +
+                            gapColumn8 +
+                            " " +
+                            gapRow10 +
+                            "," +
+                            gapColumn9 +
+                            " " +
+                            gapRow11 +
+                            "," +
+                            gapColumn10 +
+                            " " +
+                            gapRow12 +
+                            "," +
+                            gapColumn11 +
+                            " " +
+                            gapRow13 +
+                            "," +
+                            gapColumn12 +
+                            " " +
+                            gapRow14 +
+                            "," +
+                            gapColumn11 +
+                            " " +
+                            gapRow15 +
+                            "," +
+                            gapColumn10 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn13 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn8 +
+                            " " +
+                            gapRow15 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow16 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow3 +
+                            "," +
+                            gapColumn6
+                        }
+                        id="polygon12149"
+                    />
+                    <polygon
+                        className="st19"
+                        points={
+                            gapRow1 +
+                            "," +
+                            gapColumn1 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn2 +
+                            " " +
+                            gapRow3 +
+                            "," +
+                            gapColumn3 +
+                            " " +
+                            gapRow4 +
+                            "," +
+                            gapColumn4 +
+                            " " +
+                            gapRow5 +
+                            "," +
+                            gapColumn4 +
+                            " " +
+                            gapRow6 +
+                            "," +
+                            gapColumn3 +
+                            " " +
+                            gapRow7 +
+                            "," +
+                            gapColumn2 +
+                            " " +
+                            gapRow7 +
+                            "," +
+                            gapColumn5 +
+                            " " +
+                            gapRow6 +
+                            "," +
+                            gapColumn6 +
+                            " " +
+                            gapRow8 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow9 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow10 +
+                            "," +
+                            gapColumn8 +
+                            " " +
+                            gapRow10 +
+                            "," +
+                            gapColumn9 +
+                            " " +
+                            gapRow11 +
+                            "," +
+                            gapColumn10 +
+                            " " +
+                            gapRow12 +
+                            "," +
+                            gapColumn11 +
+                            " " +
+                            gapRow13 +
+                            "," +
+                            gapColumn12 +
+                            " " +
+                            gapRow14 +
+                            "," +
+                            gapColumn11 +
+                            " " +
+                            gapRow15 +
+                            "," +
+                            gapColumn10 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn13 +
+                            " " +
+                            gapRow2 +
+                            "," +
+                            gapColumn8 +
+                            " " +
+                            gapRow15 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow16 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow3 +
+                            "," +
+                            gapColumn6
+                        }
+                        id="polygon12151"
+                    />
+                    <polyline
+                        className="st20"
+                        points={
+                            gapRow8 +
+                            "," +
+                            gapColumn7 +
+                            " " +
+                            gapRow5 +
+                            "," +
+                            gapColumn8 +
+                            " " +
+                            gapRow17 +
+                            "," +
+                            gapColumn14 +
+                            " " +
+                            gapRow4 +
+                            "," +
+                            gapColumn14 +
+                            " " +
+                            gapRow16 +
+                            "," +
+                            gapColumn8 +
+                            " "
+                        }
+                        id="polyline12153"
+                    />
+                </g>
+            );
+        }
     }
     return <>{items}</>;
 }
