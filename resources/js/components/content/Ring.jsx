@@ -37,11 +37,11 @@ function Ring(props) {
                 <defs id="defs18930" />
                 <g id="viewport">
                     <SectionA />
-                    <SectionB />
+                    {/* <SectionB /> */}
                     <SectionC />
-                    <SectionD />
+                    {/* <SectionD /> */}
                     <SectionE />
-                    <SectionF />
+                    {/* <SectionF /> */}
                     <SectionG />
                     <rect
                         x="292"
