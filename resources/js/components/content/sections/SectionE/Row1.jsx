@@ -20,7 +20,7 @@ function Row1() {
         const gapRow14 = 280.5 + i * 5.2 - 10.4;
         const gapRow15 = 279.9 + i * 5.2 - 10.4;
         const gapRow16 = 280.2 + i * 5.2 - 10.4;
-        const gapRow17 = "+gapRow17+" + i * 5.2 - 10.4;
+        const gapRow17 = 281.2 + i * 5.2 - 10.4;
 
         const gapColumn1 = 262.1;
         const gapColumn2 = 263.8;
