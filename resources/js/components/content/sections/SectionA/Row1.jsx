@@ -1,7 +1,33 @@
 import React, { useState, useEffect } from "react";
-
+import CartData from "../../../add_to_cart/CartData";
+import { useNavigate } from "react-router-dom";
 function Row1() {
-    const items = [];
+    const [data, setData] = useState([]);
+    const [items, setItems] = useState([]);
+    const [random, setRandom] = useState([]);
+    const navigate = useNavigate();
+    const addCartSeat = (e) => {
+        const seat = data.find((obj) => obj.id === e.id);
+
+        if (seat === undefined) {
+            data.push(e);
+            setData(data);
+            CartData.data = data;
+            setRandom(Math.random());
+            navigate("#" + Math.floor(Math.random() * 9999));
+        } else {
+            const index = data.findIndex((res) => res.id === e.id);
+            data.splice(index, 1);
+            setData(data);
+            CartData.data = data;
+            setRandom(Math.random());
+            navigate("#" + Math.floor(Math.random() * 9999));
+        }
+    };
+
+    useEffect(() => {
+        CartData.data = data;
+    }, [random]);
 
     for (let i = 0; i < 22; i++) {
         const gapRow1 = 279.8 + i * 5.2 - 1 * 10.4;
@@ -36,14 +62,29 @@ function Row1() {
         const gapColumn12 = 407.5;
         const gapColumn13 = 407;
         const gapColumn14 = 406.6;
-
         if (i !== 10 && i !== 11) {
+            const seat = data.find((res) => res.id === i);
             items.push(
-                <g key={i} id="seat-3827" className="booth" section="1">
+                <g
+                    key={i + Math.random()}
+                    onClick={() =>
+                        addCartSeat({
+                            id: i,
+                            name: "General Admission",
+                            section: "A",
+                            row: "1",
+                            seat: i,
+                        })
+                    }
+                    id="seat-3827"
+                    className="booth"
+                    section="1"
+                >
                     <polygon
-                        className="st6 booth-fill"
-                        fill="#FFFFFF"
-                        stroke="#000000"
+                        value={i}
+                        className={seat === undefined ? "st6 booth-fill" : ""}
+                        fill={seat === undefined ? "#FFFFFF" : "#ffff66"}
+                        stroke={seat === undefined ? "#000000" : "#ffff66"}
                         strokeWidth=".5"
                         strokeMiterlimit="10"
                         points={
@@ -268,6 +309,7 @@ function Row1() {
             );
         }
     }
+
     return <>{items}</>;
 }
 
