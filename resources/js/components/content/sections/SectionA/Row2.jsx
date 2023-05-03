@@ -22,20 +22,20 @@ function Row2() {
         const gapRow16 = 280.2 + i * 5.2 - 1 * 10.4;
         const gapRow17 = 282.1 + i * 5.2 - 1 * 10.4;
 
-        const gapColumn1 = 404.5 + 8;
-        const gapColumn2 = 402.8 + 8;
-        const gapColumn3 = 402.2 + 8;
-        const gapColumn4 = 401.9 + 8;
-        const gapColumn5 = 404.4 + 8;
-        const gapColumn6 = 406.2 + 8;
-        const gapColumn7 = 406.4 + 8;
-        const gapColumn8 = 406.5 + 8;
-        const gapColumn9 = 406.9 + 8;
-        const gapColumn10 = 407.2 + 8;
-        const gapColumn11 = 407.4 + 8;
-        const gapColumn12 = 407.5 + 8;
-        const gapColumn13 = 407 + 8;
-        const gapColumn14 = 406.6 + 8;
+        const gapColumn1 = 404.5 + 8 * 2;
+        const gapColumn2 = 402.8 + 8 * 2;
+        const gapColumn3 = 402.2 + 8 * 2;
+        const gapColumn4 = 401.9 + 8 * 2;
+        const gapColumn5 = 404.4 + 8 * 2;
+        const gapColumn6 = 406.2 + 8 * 2;
+        const gapColumn7 = 406.4 + 8 * 2;
+        const gapColumn8 = 406.5 + 8 * 2;
+        const gapColumn9 = 406.9 + 8 * 2;
+        const gapColumn10 = 407.2 + 8 * 2;
+        const gapColumn11 = 407.4 + 8 * 2;
+        const gapColumn12 = 407.5 + 8 * 2;
+        const gapColumn13 = 407 + 8 * 2;
+        const gapColumn14 = 406.6 + 8 * 2;
 
         if (i !== 10 && i !== 11) {
             items.push(
@@ -141,7 +141,7 @@ function Row2() {
                         }
                         id="polygon12149"
                     />
-                    <polygon
+                    {/* <polygon
                         className="st19"
                         points={
                             gapRow1 +
@@ -263,7 +263,7 @@ function Row2() {
                             " "
                         }
                         id="polyline12153"
-                    />
+                    /> */}
                 </g>
             );
         }

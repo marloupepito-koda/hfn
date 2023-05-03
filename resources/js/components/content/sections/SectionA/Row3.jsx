@@ -141,7 +141,7 @@ function Row3() {
                         }
                         id="polygon12149"
                     />
-                    <polygon
+                    {/* <polygon
                         className="st19"
                         points={
                             gapRow1 +
@@ -263,7 +263,7 @@ function Row3() {
                             " "
                         }
                         id="polyline12153"
-                    />
+                    /> */}
                 </g>
             );
         }

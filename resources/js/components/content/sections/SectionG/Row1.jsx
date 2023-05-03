@@ -4,24 +4,24 @@ function Row1() {
     const items = [];
 
     for (let i = 0; i < 22; i++) {
-        const gapRow1 = 396.7;
-        const gapRow2 = 395.1;
-        const gapRow3 = 394.5;
-        const gapRow4 = 394.2;
-        const gapRow5 = 394.4;
-        const gapRow6 = 395;
-        const gapRow7 = 398.5;
-        const gapRow8 = 398.7;
-        const gapRow9 = 398.6;
-        const gapRow10 = 398.8;
-        const gapRow11 = 399.2;
-        const gapRow12 = 399.5;
-        const gapRow13 = 399.7;
-        const gapRow14 = 399.8;
-        const gapRow15 = 399.3;
-        const gapRow16 = 296.4;
-        const gapRow17 = 293.3;
-        const gapRow18 = 398.9;
+        const gapRow1 = 396.7 + 8 * 1;
+        const gapRow2 = 395.1 + 8 * 1;
+        const gapRow3 = 394.5 + 8 * 1;
+        const gapRow4 = 394.2 + 8 * 1;
+        const gapRow5 = 394.4 + 8 * 1;
+        const gapRow6 = 395 + 8 * 1;
+        const gapRow7 = 398.5 + 8 * 1;
+        const gapRow8 = 398.7 + 8 * 1;
+        const gapRow9 = 398.6 + 8 * 1;
+        const gapRow10 = 398.8 + 8 * 1;
+        const gapRow11 = 399.2 + 8 * 1;
+        const gapRow12 = 399.5 + 8 * 1;
+        const gapRow13 = 399.7 + 8 * 1;
+        const gapRow14 = 399.8 + 8 * 1;
+        const gapRow15 = 399.3 + 8 * 1;
+        const gapRow16 = 296.4 + 8 * 1;
+        const gapRow17 = 293.3 + 8 * 1;
+        const gapRow18 = 398.9 + 8 * 1;
         const a1 = 406.6;
         const a2 = 292;
         const a3 = 406.7;
@@ -155,129 +155,6 @@ function Row1() {
                             " "
                         }
                         id="polygon15455"
-                    />
-                    <polygon
-                        className="st19"
-                        points={
-                            gapRow1 +
-                            "," +
-                            gapColumn1 +
-                            " " +
-                            gapRow2 +
-                            "," +
-                            gapColumn1 +
-                            " " +
-                            gapRow3 +
-                            "," +
-                            gapColumn2 +
-                            " " +
-                            gapRow4 +
-                            "," +
-                            gapColumn3 +
-                            " " +
-                            gapRow4 +
-                            "," +
-                            gapColumn4 +
-                            " " +
-                            gapRow5 +
-                            "," +
-                            gapColumn5 +
-                            " " +
-                            gapRow6 +
-                            "," +
-                            gapColumn6 +
-                            " " +
-                            gapRow1 +
-                            "," +
-                            gapColumn6 +
-                            "   " +
-                            gapRow7 +
-                            "," +
-                            gapColumn5 +
-                            " " +
-                            gapRow8 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow9 +
-                            "," +
-                            gapColumn8 +
-                            " " +
-                            gapRow10 +
-                            "," +
-                            gapColumn9 +
-                            " " +
-                            gapRow11 +
-                            "," +
-                            gapColumn9 +
-                            " " +
-                            gapRow12 +
-                            "," +
-                            gapColumn10 +
-                            " " +
-                            gapRow13 +
-                            "," +
-                            gapColumn11 +
-                            " " +
-                            gapRow14 +
-                            "," +
-                            gapColumn12 +
-                            " " +
-                            gapRow13 +
-                            "," +
-                            gapColumn13 +
-                            " " +
-                            gapRow12 +
-                            "," +
-                            gapColumn14 +
-                            "   " +
-                            gapRow15 +
-                            "," +
-                            gapColumn15 +
-                            " " +
-                            gapRow10 +
-                            "," +
-                            gapColumn15 +
-                            " " +
-                            gapRow9 +
-                            "," +
-                            gapColumn16 +
-                            " " +
-                            gapRow8 +
-                            "," +
-                            gapColumn17 +
-                            " " +
-                            gapRow7 +
-                            "," +
-                            gapColumn2 +
-                            " "
-                        }
-                        id="polygon15457"
-                    />
-                    <polyline
-                        className="st20"
-                        points={
-                            a1 +
-                            "," +
-                            a2 +
-                            " " +
-                            a3 +
-                            " , " +
-                            a4 +
-                            " " +
-                            a5 +
-                            " , " +
-                            a6 +
-                            " " +
-                            a7 +
-                            " , " +
-                            a8 +
-                            " " +
-                            a9 +
-                            " , " +
-                            a10
-                        }
-                        id="polyline15459"
                     />
                 </g>
             );

@@ -7,7 +7,6 @@ import AddToCartTable from "./components/Table";
 function AddToCart() {
     return (
         <div>
-            <AddToCartTopNavbar />
             <div className="row col-md-8 offset-md-2">
                 <AddToCartNoSeats />
                 <AddToCartTable />

@@ -141,7 +141,7 @@ function Row11() {
                         }
                         id="polygon12149"
                     />
-
+                    {/* 
                     <polygon
                         className="st19"
                         points={
@@ -265,7 +265,7 @@ function Row11() {
                             " "
                         }
                         id="polyline10485"
-                    />
+                    /> */}
                 </g>
             );
         }

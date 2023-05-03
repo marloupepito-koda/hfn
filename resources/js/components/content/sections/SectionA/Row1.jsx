@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CartData from "../../../add_to_cart/CartData";
 import { useNavigate } from "react-router-dom";
+import CartData from "../../../add_to_cart/CartData";
 function Row1() {
     const [data, setData] = useState([]);
     const [items, setItems] = useState([]);
@@ -8,7 +8,7 @@ function Row1() {
     const navigate = useNavigate();
     const addCartSeat = (e) => {
         const seat = data.find((obj) => obj.id === e.id);
-
+        console.log(seat);
         if (seat === undefined) {
             data.push(e);
             setData(data);
@@ -48,20 +48,21 @@ function Row1() {
         const gapRow16 = 280.2 + i * 5.2 - 1 * 10.4;
         const gapRow17 = 282.1 + i * 5.2 - 1 * 10.4;
 
-        const gapColumn1 = 404.5;
-        const gapColumn2 = 402.8;
-        const gapColumn3 = 402.2;
-        const gapColumn4 = 401.9;
-        const gapColumn5 = 404.4;
-        const gapColumn6 = 406.2;
-        const gapColumn7 = 406.4;
-        const gapColumn8 = 406.5;
-        const gapColumn9 = 406.9;
-        const gapColumn10 = 407.2;
-        const gapColumn11 = 407.4;
-        const gapColumn12 = 407.5;
-        const gapColumn13 = 407;
-        const gapColumn14 = 406.6;
+        const gapColumn1 = 404.5 + 8 * 1;
+        const gapColumn2 = 402.8 + 8 * 1;
+        const gapColumn3 = 402.2 + 8 * 1;
+        const gapColumn4 = 401.9 + 8 * 1;
+        const gapColumn5 = 404.4 + 8 * 1;
+        const gapColumn6 = 406.2 + 8 * 1;
+        const gapColumn7 = 406.4 + 8 * 1;
+        const gapColumn8 = 406.5 + 8 * 1;
+        const gapColumn9 = 406.9 + 8 * 1;
+        const gapColumn10 = 407.2 + 8 * 1;
+        const gapColumn11 = 407.4 + 8 * 1;
+        const gapColumn12 = 407.5 + 8 * 1;
+        const gapColumn13 = 407 + 8 * 1;
+        const gapColumn14 = 406.6 + 8 * 1;
+
         if (i !== 10 && i !== 11) {
             const seat = data.find((res) => res.id === i);
             items.push(
@@ -83,8 +84,8 @@ function Row1() {
                     <polygon
                         value={i}
                         className={seat === undefined ? "st6 booth-fill" : ""}
-                        fill={seat === undefined ? "#FFFFFF" : "#ffff66"}
-                        stroke={seat === undefined ? "#000000" : "#ffff66"}
+                        fill={seat === undefined ? "#000000" : "#ffff66"}
+                        stroke="#000000"
                         strokeWidth=".5"
                         strokeMiterlimit="10"
                         points={
@@ -182,7 +183,7 @@ function Row1() {
                         }
                         id="polygon12149"
                     />
-                    <polygon
+                    {/* <polygon
                         className="st19"
                         points={
                             gapRow1 +
@@ -304,12 +305,11 @@ function Row1() {
                             " "
                         }
                         id="polyline12153"
-                    />
+                    /> */}
                 </g>
             );
         }
     }
-
     return <>{items}</>;
 }
 

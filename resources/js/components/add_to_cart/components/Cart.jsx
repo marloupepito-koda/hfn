@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 function AddToCartNoSeats() {
     const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    const navigate = useNavigate();
+    const goToCheckOut = () => {
+        navigate("/checkout");
+    };
     return (
         <>
             <div className="card mb-5 mt-5">
@@ -143,7 +147,12 @@ function AddToCartNoSeats() {
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <button className="btn btn-sm btn-primary">
+                                                        <button
+                                                            onClick={
+                                                                goToCheckOut
+                                                            }
+                                                            className="btn btn-sm btn-primary"
+                                                        >
                                                             ADD TO CART
                                                         </button>
                                                     </td>

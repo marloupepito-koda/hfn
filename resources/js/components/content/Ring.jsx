@@ -7,6 +7,7 @@ import SectionE from "./sections/SectionE";
 import SectionF from "./sections/SectionF";
 import SectionG from "./sections/SectionG";
 import Draggable from "react-draggable";
+import axios from "axios";
 function Ring(props) {
     const [zoom, setZoom] = useState(1);
     const container = {
@@ -22,6 +23,11 @@ function Ring(props) {
         marginBottom: "30px",
     };
 
+    useEffect(() => {
+        axios.get("/api/get_all_cart_product").then((res) => {
+            console.log(res.data.status);
+        });
+    }, []);
     const handleZoomIn = () => {
         setZoom(zoom + 0.1);
     };
@@ -62,7 +68,7 @@ function Ring(props) {
             </div>
             <div className="container col-md-12" style={container}>
                 <center
-                    onWheel={handleScroll}
+                    // onWheel={handleScroll}
                     className="container"
                     style={{
                         transform: `scale(${zoom})`,
@@ -75,7 +81,7 @@ function Ring(props) {
                             style={{
                                 enableBackground: "new 0 0 612 792",
                                 WebkitUserDrag: "none",
-                                cursor: "move",
+                                // cursor: "move",
                                 marginTop: "-250",
                             }}
                             viewBox="0 0 612 792"

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Error404 from "./Error404";
-import HomeIndex from "../homepage/Index";
+import AppLayout from "../Layout";
 import SectionIndex from "../content/Index";
 import AddToCart from "../add_to_cart/Layout";
+import CheckoutLayout from "../checkout/Layout";
 export const router = createBrowserRouter([
     {
         path: "/",
+        element: <AppLayout />,
         children: [
             {
                 path: "/",
@@ -15,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: "/buy_ticket",
                 element: <SectionIndex />,
+            },
+            {
+                path: "/checkout",
+                element: <CheckoutLayout />,
             },
         ],
     },

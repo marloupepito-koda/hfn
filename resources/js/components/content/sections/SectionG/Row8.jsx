@@ -4,24 +4,24 @@ function Row8() {
     const items = [];
 
     for (let i = 0; i < 30; i++) {
-        const gapRow1 = 396.7 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow2 = 395.1 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow3 = 394.5 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow4 = 394.2 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow5 = 394.4 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow6 = 395 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow7 = 398.5 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow8 = 398.7 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow9 = 398.6 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow10 = 398.8 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow11 = 399.2 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow12 = 399.5 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow13 = 399.7 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow14 = 399.8 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow15 = 399.3 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow16 = 296.4 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow17 = 293.3 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
-        const gapRow18 = 398.9 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
+        const gapRow1 = 396.7 + 8 * 6;
+        const gapRow2 = 395.1 + 8 * 6;
+        const gapRow3 = 394.5 + 8 * 6;
+        const gapRow4 = 394.2 + 8 * 6;
+        const gapRow5 = 394.4 + 8 * 6;
+        const gapRow6 = 395 + 8 * 6;
+        const gapRow7 = 398.5 + 8 * 6;
+        const gapRow8 = 398.7 + 8 * 6;
+        const gapRow9 = 398.6 + 8 * 6;
+        const gapRow10 = 398.8 + 8 * 6;
+        const gapRow11 = 399.2 + 8 * 6;
+        const gapRow12 = 399.5 + 8 * 6;
+        const gapRow13 = 399.7 + 8 * 6;
+        const gapRow14 = 399.8 + 8 * 6;
+        const gapRow15 = 399.3 + 8 * 6;
+        const gapRow16 = 296.4 + 8 * 6;
+        const gapRow17 = 293.3 + 8 * 6;
+        const gapRow18 = 398.9 + 8 * 6;
         const a1 = 406.6 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
         const a2 = 292 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
         const a3 = 406.7 + 8 + 8 + 8 + 8 + 8 + 8 + 8;
@@ -156,7 +156,7 @@ function Row8() {
                         }
                         id="polygon15455"
                     />
-                    <polygon
+                    {/* <polygon
                         className="st19"
                         points={
                             gapRow1 +
@@ -253,8 +253,8 @@ function Row8() {
                             " "
                         }
                         id="polygon15457"
-                    />
-                    <polyline
+                    /> */}
+                    {/* <polyline
                         className="st20"
                         points={
                             a1 +
@@ -278,7 +278,7 @@ function Row8() {
                             a10
                         }
                         id="polyline15459"
-                    />
+                    /> */}
                 </g>
             );
         }
