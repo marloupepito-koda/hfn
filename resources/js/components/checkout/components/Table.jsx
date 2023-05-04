@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
-
+import CartData from "../../add_to_cart/CartData";
+import { useLocation } from "react-router-dom";
 function CheckoutTable() {
+    const location = useLocation().hash;
+    const [addCart, setAddCart] = useState([]);
+
+    useEffect(() => {
+        setAddCart(CartData.data);
+        console.log("waaa", addCart);
+    }, [location]);
     return (
         <>
             <h3 className="mt-3">Order Summary</h3>
@@ -15,13 +23,25 @@ function CheckoutTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
+                    {addCart.map((res) => (
+                        <tr>
+                            <th scope="row">
+                                {res.product_name}(Section{" "}
+                                {res.venue_section_id === 1
+                                    ? "A"
+                                    : res.venue_section_id === 2
+                                    ? "B"
+                                    : res.venue_section_id === 3
+                                    ? "C"
+                                    : "D"}
+                                , Row {res.venue_row}, Seats {res.venue_seat})
+                            </th>
+                            <td>{res.price_list}</td>
+                            <td>{res.price_fee}</td>
+                            <td>{res.quantity}</td>
+                            <td>{res.price_fee + res.price_list}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <div className="col-md-4 offset-md-8">

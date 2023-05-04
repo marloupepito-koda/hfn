@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import CartData from "../../../add_to_cart/CartData";
+function Row2(props) {
+    const [items, setItems] = useState([]);
+    const navigate = useNavigate();
 
-function Row2() {
-    const items = [];
+    const addCartSeat = (e) => {
+        const seatCheck = CartData.data.find(
+            (obj) => obj.cart_product_id === e.cart_product_id
+        );
+        if (seatCheck === undefined) {
+            CartData.data.push(e);
+            navigate("#" + Math.floor(Math.random() * 9999));
+        } else {
+            const index = CartData.data.findIndex(
+                (res) => res.cart_product_id === e.cart_product_id
+            );
+            CartData.data.splice(index, 1);
+            navigate("#" + Math.floor(Math.random() * 9999));
+        }
+    };
 
     for (let i = 0; i < 22; i++) {
         const gapRow1 = 279.8 + i * 5.2 - 1 * 10.4;
@@ -38,11 +56,25 @@ function Row2() {
         const gapColumn14 = 406.6 + 8 * 2;
 
         if (i !== 10 && i !== 11) {
+            const aa = i < 11 ? 21 - i - 2 : 21 - i;
+            const seatData = props.data[aa];
+
+            const seatColor = CartData.data.find(
+                (res) => res.cart_product_id === seatData.cart_product_id
+            );
             items.push(
-                <g key={i} id="seat-3827" className="booth" section="1">
+                <g
+                    key={i + Math.random()}
+                    onClick={() => addCartSeat(seatData)}
+                    id="seat-3827"
+                    className="booth"
+                    section="1"
+                >
                     <polygon
-                        className="st6 booth-fill"
-                        fill="#FFFFFF"
+                        className={
+                            seatColor === undefined ? "st6 booth-fill" : ""
+                        }
+                        fill={seatColor === undefined ? "#000000" : "#ffff66"}
                         stroke="#000000"
                         strokeWidth=".5"
                         strokeMiterlimit="10"

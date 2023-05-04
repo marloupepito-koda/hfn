@@ -8,6 +8,7 @@ import SectionF from "./sections/SectionF";
 import SectionG from "./sections/SectionG";
 import Draggable from "react-draggable";
 import axios from "axios";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 function Ring(props) {
     const [zoom, setZoom] = useState(1);
     const container = {
@@ -23,11 +24,6 @@ function Ring(props) {
         marginBottom: "30px",
     };
 
-    useEffect(() => {
-        axios.get("/api/get_all_cart_product").then((res) => {
-            console.log(res.data.status);
-        });
-    }, []);
     const handleZoomIn = () => {
         setZoom(zoom + 0.1);
     };
@@ -45,6 +41,15 @@ function Ring(props) {
     };
     return (
         <div>
+            <button id="app-title" style={{ backgroundColor: "#999" }}>
+                Hello Tooltip Example
+                <ReactTooltip
+                    anchorId="app-title"
+                    place="top"
+                    content="Hello world! I'm a Tooltip"
+                />
+            </button>
+
             <div className="col-md-12" style={{ zIndex: "1" }}>
                 <div className="row col-md-2 p-0">
                     <div className="col-md-6 p-0">

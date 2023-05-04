@@ -21,3 +21,6 @@ Route::get('/{jsx?}',function(){
     return view('index');
 })->where('jsx','[\/\w\.-]*');
 
+
+//  Route::get('/get_all_cart_product', 'CartProductsController@get_all_cart_product');
+

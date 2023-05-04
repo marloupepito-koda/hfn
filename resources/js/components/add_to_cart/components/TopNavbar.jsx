@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import CartData from "../CartData";
+import { useLocation, Link } from "react-router-dom";
 function AddToCartTopNavbar() {
+    const [cartCount, setCartCount] = useState(0);
+    const location = useLocation().hash;
+    useEffect(() => {
+        setCartCount(CartData.data.length);
+    }, [location]);
     return (
         <nav className="navbar navbar-expand-lg bg-black">
             <div className="container">
-                <a className="navbar-brand" href="index.html">
+                <Link className="navbar-brand" to="/">
                     HFN Live
-                </a>
+                </Link>
 
                 {/* <a
                     href="ticket.html"
@@ -40,13 +46,15 @@ function AddToCartTopNavbar() {
                         </li>
 
                         <li className="nav-item">
-                            <a
+                            <Link
                                 className="nav-link click-scroll"
-                                href="#section_6"
+                                to="/checkout"
                             >
                                 Cart&nbsp;
-                                <span className="badge bg-success">New</span>
-                            </a>
+                                <span className="badge bg-success">
+                                    {cartCount}
+                                </span>
+                            </Link>
                         </li>
                         <li className="nav-item">
                             <a
