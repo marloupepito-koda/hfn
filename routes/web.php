@@ -20,4 +20,3 @@ Route::get('/', function () {
 Route::get('/{jsx?}',function(){
     return view('index');
 })->where('jsx','[\/\w\.-]*');
-

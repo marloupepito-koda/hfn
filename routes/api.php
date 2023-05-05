@@ -18,6 +18,7 @@ use App\Http\Controllers\CartProductsController;
 
 
 Route::get('/get_all_cart_product', [CartProductsController::class, 'get_all_cart_product']);
+Route::get('/get_seats', [CartProductsController::class, 'get_seats']);
 //  Route::get('/get_all_seats', 'CartOrderedProductsController@get_all_seats');
  
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
