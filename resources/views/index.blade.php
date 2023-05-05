@@ -165,7 +165,7 @@
 
 
         </style>
-    <body class="antialiased">
+    <body className="antialiased">
         <div id="app">
          
             </div>

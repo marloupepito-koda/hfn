@@ -4,18 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CartProducts;
+use Illuminate\Support\Facades\DB;
+
 class CartProductsController extends Controller
 {
    public function get_all_cart_product(){
-         
-         $cartProducts = CartProducts::where('client_id','157')->get();
-
-          dd($cartProducts[0]);
-
-
-          return response()->json([
-          'status' => $cartProducts,
-          ]);
+     
      }
 
      public function get_seats($status='', $cat_id=null){

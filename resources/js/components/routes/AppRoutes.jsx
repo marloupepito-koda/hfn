@@ -5,6 +5,7 @@ import AppLayout from "../Layout";
 import SectionIndex from "../content/Index";
 import AddToCart from "../add_to_cart/Layout";
 import CheckoutLayout from "../checkout/Layout";
+import SearchTicketLayout from "../search_ticket/Layout";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: "/checkout",
                 element: <CheckoutLayout />,
+            },
+            {
+                path: "/tickets",
+                element: <SearchTicketLayout />,
             },
         ],
     },

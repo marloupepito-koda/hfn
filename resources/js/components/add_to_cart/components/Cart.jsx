@@ -1,10 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import AddToCartTable from "./Table";
+import CartData from "../CartData";
 function AddToCartNoSeats() {
     const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+    const [quantity, setQuantity] = useState(0);
     const navigate = useNavigate();
     const goToCheckOut = () => {
         navigate("/checkout");
+    };
+
+    const addNoSeats = (e) => {
+        const data = {
+            cart_product_id: "no seats",
+            product_name: "General Admission No Seat",
+            price_list: 60,
+            price_fee: 7.5,
+            quantity: quantity,
+        };
+        const seatCheck = CartData.data.find(
+            (obj) => obj.cart_product_id === "no seats"
+        );
+        if (seatCheck === undefined) {
+            CartData.data.push(data);
+            navigate("#" + Math.floor(Math.random() * 9999));
+        } else {
+            seatCheck.quantity = quantity;
+            navigate("#" + Math.floor(Math.random() * 9999));
+        }
     };
     return (
         <>
@@ -107,7 +130,7 @@ function AddToCartNoSeats() {
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <div className="card">
+                                <div className="card h-100 ">
                                     <div className="card-body">
                                         <h5 className="card-title">
                                             General Admission No Seat
@@ -116,7 +139,10 @@ function AddToCartNoSeats() {
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Price</th>
-                                                    <th scope="col">Row</th>
+                                                    <th scope="col">
+                                                        General Admission No
+                                                        Seat
+                                                    </th>
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
@@ -128,13 +154,19 @@ function AddToCartNoSeats() {
                                                             className="form-select form-select-sm mb-3"
                                                             aria-label=".form-select-sm example"
                                                             defaultValue="1"
+                                                            onInput={(e) =>
+                                                                setQuantity(
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
                                                         >
                                                             <option
+                                                                value="0"
                                                                 selected
                                                                 disabled
-                                                                value="selected"
                                                             >
-                                                                Select Row
+                                                                Select Quantity
                                                             </option>
                                                             {rows.map((res) => (
                                                                 <option
@@ -148,9 +180,7 @@ function AddToCartNoSeats() {
                                                     </td>
                                                     <td>
                                                         <button
-                                                            onClick={
-                                                                goToCheckOut
-                                                            }
+                                                            onClick={addNoSeats}
                                                             className="btn btn-sm btn-primary"
                                                         >
                                                             ADD TO CART
@@ -160,6 +190,14 @@ function AddToCartNoSeats() {
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <AddToCartTable />
+                                    <button
+                                        onClick={goToCheckOut}
+                                        className="btn  btn-primary m-3"
+                                    >
+                                        CHECKOUT
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -8,13 +8,13 @@ function AddToCartTable() {
         setData(CartData.data);
     }, [location]);
     return (
-        <>
+        <div className="container">
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">Seat #</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Product Name</th>
                         <th scope="col">Section</th>
+                        <th scope="col">Row</th>
                         <th scope="col">Seat</th>
                     </tr>
                 </thead>
@@ -23,15 +23,24 @@ function AddToCartTable() {
                         ? ""
                         : data.map((res) => (
                               <tr>
-                                  <th scope="row">{res.id}</th>
-                                  <td>{res.name}</td>
-                                  <td>{res.section}</td>
-                                  <td>{res.seat}</td>
+                                  <td>{res.product_name}</td>
+                                  <td>
+                                      Section{" "}
+                                      {res.venue_section_id === 1
+                                          ? "A"
+                                          : res.venue_section_id === 2
+                                          ? "B"
+                                          : res.venue_section_id === 3
+                                          ? "C"
+                                          : "D"}
+                                  </td>
+                                  <td>Row {res.venue_row}</td>
+                                  <td>Seat {res.venue_seat}</td>
                               </tr>
                           ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 
