@@ -4,11 +4,30 @@ import { useLocation } from "react-router-dom";
 function CheckoutTable() {
     const location = useLocation().hash;
     const [addCart, setAddCart] = useState([]);
+    const [inputValue, setInputValue] = useState("");
 
     useEffect(() => {
         setAddCart(CartData.data);
-        console.log("waaa", addCart);
     }, [location]);
+
+    const subTotal = CartData.data.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.price_list;
+    }, 0);
+
+    const ticketFee = CartData.data.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.price_fee;
+    }, 0);
+
+    const grandTotal = subTotal + ticketFee;
+
+    function handleInput(event) {
+        const formattedValue = new Intl.NumberFormat("en-US", {
+            style: "decimal",
+        }).format(event.target.value);
+
+        setInputValue(formattedValue);
+    }
+
     return (
         <>
             <h3 className="mt-3">Order Summary</h3>
@@ -26,20 +45,29 @@ function CheckoutTable() {
                     {addCart.map((res) => (
                         <tr>
                             <th scope="row">
-                                {res.product_name}(Section{" "}
-                                {res.venue_section_id === 1
+                                {res.product_name}
+                                {res.product_name ===
+                                "General Admission No Seat"
+                                    ? ""
+                                    : "Section " + res.venue_section_id === 1
                                     ? "A"
                                     : res.venue_section_id === 2
                                     ? "B"
                                     : res.venue_section_id === 3
                                     ? "C"
-                                    : "D"}
-                                , Row {res.venue_row}, Seats {res.venue_seat})
+                                    : res.venue_section_id === 4
+                                    ? "D"
+                                    : "Row " +
+                                      res.venue_row +
+                                      " Seats " +
+                                      res.venue_seat}
                             </th>
                             <td>{res.price_list}</td>
                             <td>{res.price_fee}</td>
                             <td>{res.quantity}</td>
-                            <td>{res.price_fee + res.price_list}</td>
+                            <td>
+                                {res.price_fee + res.price_list * res.quantity}
+                            </td>
                         </tr>
                     ))}
                 </tbody>
@@ -49,19 +77,26 @@ function CheckoutTable() {
                     <thead>
                         <tr>
                             <td scope="row">Sub Total:</td>
-                            <th>$160.00</th>
+                            <th>${subTotal}</th>
                         </tr>
                         <tr>
                             <td scope="row">Ticket Fee:</td>
-                            <th>$15.00</th>
+                            <th>${ticketFee}</th>
                         </tr>
                         <tr>
                             <td scope="row">Discount:</td>
-                            <th>00.00</th>
+                            <th>
+                                <input
+                                    type="number"
+                                    value={inputValue}
+                                    onInput={handleInput}
+                                    class="form-control"
+                                />
+                            </th>
                         </tr>
                         <tr>
                             <td scope="row">Grand Total:</td>
-                            <th>$175.00</th>
+                            <th>${grandTotal - inputValue}</th>
                         </tr>
                     </thead>
                 </table>

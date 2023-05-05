@@ -1,25 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CartData from "../../../add_to_cart/CartData";
-// import ToolTip from "../../../add_to_cart/components/ToolTip";
-import { Tooltip as ReactTooltip } from "react-tooltip";
 import Tippy from "tippy.js";
 function Row1(props) {
-    const buttonRef = useRef(null);
     const [items, setItems] = useState([]);
-
+    const myRef = useRef([]);
     const navigate = useNavigate();
-
-    function openTooltip(status, data) {
-        if (status === true) {
-        }
-    }
-
-    useEffect(() => {
-        Tippy(buttonRef.current, {
-            content: "Tooltip text",
-        });
-    }, []);
 
     const addCartSeat = (e) => {
         const seatCheck = CartData.data.find(
@@ -36,6 +22,37 @@ function Row1(props) {
             navigate("#" + Math.floor(Math.random() * 9999));
         }
     };
+
+    function openTooltip(status, data) {
+        const section =
+            data.venue_section_id === 1
+                ? "A"
+                : data.venue_section_id === 2
+                ? "B"
+                : data.venue_section_id === 3
+                ? "C"
+                : "D";
+        const row = data.venue_row;
+        const seat = data.venue_seat;
+        const name = data.product_name;
+        const price = data.price_list;
+        const dataTable =
+            '<table className="table" <span style="color: aqua;"><thead> </thead> <tbody> <tr><th scope="row">Section</th><td>' +
+            section +
+            '</td> </tr> <tr><th scope="row">Row</th><td>' +
+            row +
+            '</td> </tr> <tr><th scope="row">Seat</th><td>' +
+            seat +
+            '</td> </tr> <tr><th scope="row">Name</th><td>' +
+            name +
+            '</td> </td> </tr> <tr><th scope="row">Price</th><td>' +
+            price +
+            "</td> </tr></tbody></table>";
+        Tippy(myRef.current[data.cart_product_id], {
+            content: dataTable,
+            allowHTML: true,
+        });
+    }
 
     for (let i = 0; i < props.data.length + 2; i++) {
         const gapRow1 = 279.8 + i * 5.2 - 1 * 10.4;
@@ -76,28 +93,29 @@ function Row1(props) {
             const seatData = props.data[aa];
 
             const seatColor = CartData.data.find((res) =>
-                res.cart_product_id !== undefined
+                res.cart_product_id !== undefined && seatData !== undefined
                     ? res.cart_product_id === seatData.cart_product_id
                     : undefined
             );
 
             items.push(
                 <g
-                    ref={buttonRef}
+                    ref={(el) =>
+                        (myRef.current[
+                            seatData !== undefined
+                                ? seatData.cart_product_id
+                                : ""
+                        ] = el)
+                    }
+                    onMouseEnter={() => openTooltip(true, seatData)}
+                    onMouseLeave={() => openTooltip(false, seatData)}
                     key={i + Math.random()}
                     onClick={() => addCartSeat(seatData)}
                     id="app-title"
                     className="booth"
                     section="1"
                 >
-                    <ReactTooltip
-                        anchorId="app-title"
-                        place="bottom"
-                        content="Hello world! I'm a Tooltip"
-                    />
                     <polygon
-                        onMouseEnter={() => openTooltip(true, seatData)}
-                        onMouseLeave={() => openTooltip(false, seatData)}
                         value={i}
                         className={
                             seatColor === undefined ? "st6 booth-fill" : ""

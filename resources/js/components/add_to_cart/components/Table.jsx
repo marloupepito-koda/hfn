@@ -8,7 +8,7 @@ function AddToCartTable() {
         setData(CartData.data);
     }, [location]);
     return (
-        <>
+        <div className="container">
             <table className="table">
                 <thead>
                     <tr>
@@ -40,7 +40,7 @@ function AddToCartTable() {
                           ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 
