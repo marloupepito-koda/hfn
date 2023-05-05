@@ -9,22 +9,32 @@ use Illuminate\Support\Facades\DB;
 class CartProductsController extends Controller
 {
    public function get_all_cart_product(){
-         
-     //     $cartProducts = CartProducts::where('client_id','157')->get();
+     
+     }
 
+     public function get_seats($status='', $cat_id=null){
+          if ($status == '') {
+               $sqlm = ["active", "inactive"];
+          } else {
+               $sqlm = [$status];
+          }
 
-          $cartProducts = DB::table('cart_products as cp')
-          ->select('cp.*', 'cc.category_name', 'va.name AS venue_area', 'vs.name AS venue_section', 'cp.venue_row AS venue_row', 'cp.venue_seat AS venue_seat')
-          ->leftJoin('venue_areas as va', 'va.venue_area_id', '=', 'cp.venue_area_id')
-          ->leftJoin('venue_sections as vs', 'vs.venue_section_id', '=', 'cp.venue_section_id')
-          ->leftJoin('cart_categories as cc', 'cc.cart_category_id', '=', 'cp.cart_category_id')
-          ->where('cp.client_id', '=', '157')
-          ->orderBy('cc.sort_order', 'asc')
-          ->orderBy('cp.sort_order', 'asc')
+          $results = CartProducts::select('cart_products.*', 'cart_categories.category_name', 'venue_areas.name as venue_area', 'venue_sections.name as venue_section', 'cart_products.venue_row as venue_row', 'cart_products.venue_seat as venue_seat')
+          ->leftJoin('venue_areas', 'venue_areas.venue_area_id', '=', 'cart_products.venue_area_id')
+          ->leftJoin('venue_sections', 'venue_sections.venue_section_id', '=', 'cart_products.venue_section_id')
+          ->leftJoin('cart_categories', 'cart_categories.cart_category_id', '=', 'cart_products.cart_category_id')
+          ->where('cart_products.client_id', 157)
+          ->where('cart_products.cart_category_id', 510)
+          ->whereIn('cart_products.status', $sqlm)
+          ->orderBy('cart_categories.sort_order', 'asc')
+          ->orderBy('cart_products.sort_order', 'asc')
           ->get();
-          return response()->json([
-          'status' => $cartProducts,
-          ]);
+
+          dd($results);
+     }
+
+     public function tester(){
+          return 'Hello world!';
      }
 
 }
