@@ -25,8 +25,7 @@ function SectionA() {
     const [row11, setRow11] = useState([]);
 
     useEffect(() => {
-        axios.get("/api/get_all_cart_product").then((res) => {
-            console.log("waaa", res.data.status);
+        axios.get("/api/get_seats").then((res) => {
             const row1 = res.data.status.filter(
                 (obj) => obj.cart_product_id < 6021
             );

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import CartData from "../../add_to_cart/CartData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 function CheckoutTable() {
     const location = useLocation().hash;
     const [addCart, setAddCart] = useState([]);
     const [inputValue, setInputValue] = useState("");
-
+    const [count, setCount] = useOutletContext();
     useEffect(() => {
         setAddCart(CartData.data);
-    }, [location]);
+    }, [count]);
 
     const subTotal = CartData.data.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.price_list;
@@ -30,7 +30,7 @@ function CheckoutTable() {
 
     return (
         <>
-            <h3 className="mt-3">Order Summary</h3>
+            <h3 className="mt-5">Order Summary</h3>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -43,7 +43,7 @@ function CheckoutTable() {
                 </thead>
                 <tbody>
                     {addCart.map((res) => (
-                        <tr>
+                        <tr key={res.cart_product_id}>
                             <th scope="row">
                                 {res.product_name}
                                 {res.product_name ===

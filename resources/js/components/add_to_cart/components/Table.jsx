@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import CartData from "../CartData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 function AddToCartTable() {
+    const [count, setCount] = useOutletContext();
     const location = useLocation().hash;
-    const [data, setData] = useState(CartData);
+    const [data, setData] = useState([]);
     useEffect(() => {
         setData(CartData.data);
-    }, [location]);
+    }, [location + count]);
     return (
         <div className="container">
             <table className="table">
@@ -22,7 +23,7 @@ function AddToCartTable() {
                     {data.length === 0 || data.length === undefined
                         ? ""
                         : data.map((res) => (
-                              <tr>
+                              <tr key={res.cart_product_id}>
                                   <td>{res.product_name}</td>
                                   <td>
                                       Section{" "}

@@ -111,7 +111,7 @@ function Row2(props) {
                     key={i + Math.random()}
                     onClick={() => addCartSeat(seatData)}
                     id="seat-3827"
-                    className="booth"
+                    className="booth vip-ringside"
                     section="1"
                 >
                     <polygon

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CartProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +21,5 @@ Route::get('/{jsx?}',function(){
     return view('index');
 })->where('jsx','[\/\w\.-]*');
 
+
+Route::patch('/create_checkout', [CartProductsController::class, 'create_checkout']);

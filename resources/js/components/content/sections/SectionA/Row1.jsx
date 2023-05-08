@@ -112,7 +112,7 @@ function Row1(props) {
                     key={i + Math.random()}
                     onClick={() => addCartSeat(seatData)}
                     id="app-title"
-                    className="booth"
+                    className="booth vip-ringside"
                     section="1"
                 >
                     <polygon

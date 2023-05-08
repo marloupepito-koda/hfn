@@ -131,7 +131,7 @@ function CheckoutPaymentMethods() {
                     <option>Others</option>
                 </select>
             </div>
-            <div className="col-md-12  mt-4">
+            <div className="col-md-12  mt-4 ">
                 Order Notes
                 <textarea
                     placeholder="Order Notes"
@@ -140,7 +140,7 @@ function CheckoutPaymentMethods() {
                     rows="3"
                 ></textarea>
             </div>
-            <div className="col-md-3  offset-md-5 mt-4">
+            <div className="col-md-3  offset-md-5 mt-4 mb-5">
                 <input
                     type="submit"
                     value="Place Order"

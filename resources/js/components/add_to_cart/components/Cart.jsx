@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import AddToCartTable from "./Table";
 import CartData from "../CartData";
+import axios from "axios";
+import moment from "moment";
 function AddToCartNoSeats() {
     const rows = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
     const [quantity, setQuantity] = useState(0);
+    const [count, setCount] = useOutletContext();
+    const [disable, setDisabled] = useState(true);
     const navigate = useNavigate();
     const goToCheckOut = () => {
-        navigate("/checkout");
+        axios
+            .patch("/create_checkout", {
+                data: CartData.data,
+                date: moment().format("LLL"),
+            })
+            .then((res) => {
+                navigate("/checkout#" + Math.floor(Math.random() * 9999));
+            });
     };
+
+    useEffect(() => {
+        console.log(CartData.data.length);
+        if (CartData.data.length === 0) {
+            setDisabled(true);
+        } else {
+            setDisabled(false);
+        }
+    }, [CartData.data.length]);
 
     const addNoSeats = (e) => {
         const data = {
@@ -193,6 +213,7 @@ function AddToCartNoSeats() {
 
                                     <AddToCartTable />
                                     <button
+                                        disabled={disable}
                                         onClick={goToCheckOut}
                                         className="btn  btn-primary m-3"
                                     >

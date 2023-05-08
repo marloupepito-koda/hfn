@@ -8,7 +8,7 @@ function AddToCartTopNavbar() {
         setCartCount(CartData.data.length);
     }, [location]);
     return (
-        <nav className="navbar navbar-expand-lg bg-black">
+        <nav className="navbar navbar-expand-lg bg-black fixed-top">
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     HFN Live
