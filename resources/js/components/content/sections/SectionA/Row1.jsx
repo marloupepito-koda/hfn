@@ -98,6 +98,12 @@ function Row1(props) {
                     : undefined
             );
 
+            const taken =
+                seatData !== undefined
+                    ? seatData.quantity === 0
+                        ? "taken"
+                        : ""
+                    : "";
             items.push(
                 <g
                     ref={(el) =>
@@ -110,7 +116,9 @@ function Row1(props) {
                     onMouseEnter={() => openTooltip(true, seatData)}
                     onMouseLeave={() => openTooltip(false, seatData)}
                     key={i + Math.random()}
-                    onClick={() => addCartSeat(seatData)}
+                    onClick={() =>
+                        taken === "taken" ? "" : addCartSeat(seatData)
+                    }
                     id="app-title"
                     className="booth vip-ringside"
                     section="1"
@@ -118,7 +126,9 @@ function Row1(props) {
                     <polygon
                         value={i}
                         className={
-                            seatColor === undefined ? "st6 booth-fill" : ""
+                            seatColor === undefined
+                                ? "st6 booth-fill " + taken
+                                : ""
                         }
                         fill={seatColor === undefined ? "#000000" : "#ffff66"}
                         stroke="#000000"

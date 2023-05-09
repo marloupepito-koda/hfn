@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CartData from "../../add_to_cart/CartData";
-import { useLocation, useOutletContext } from "react-router-dom";
+import { useLocation, useOutletContext, Link } from "react-router-dom";
+import CheckoutPaymentMethods from "./PaymentMethod";
 function CheckoutTable() {
     const location = useLocation().hash;
     const [addCart, setAddCart] = useState([]);
@@ -101,6 +102,15 @@ function CheckoutTable() {
                     </thead>
                 </table>
             </div>
+            <Link to="/" className="btn btn-dark col-md-3 mb-3">
+                BACK TO CART
+            </Link>
+            <CheckoutPaymentMethods
+                subTotal={subTotal}
+                ticketFee={ticketFee}
+                grandTotal={grandTotal - inputValue}
+                discount={parseFloat(inputValue)}
+            />
         </>
     );
 }

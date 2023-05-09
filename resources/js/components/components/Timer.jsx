@@ -42,7 +42,7 @@ const TimerSession = (props) => {
         if (session === false) {
             axios.patch("/api/end_session").then((res) => {
                 CartData.data = [];
-                navigate("/");
+                navigate("/#" + Math.floor(Math.random() * 9999));
             });
         }
     }, [session]);
