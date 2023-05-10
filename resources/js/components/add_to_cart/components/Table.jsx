@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CartData from "../CartData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 function AddToCartTable() {
+    const [count, setCount] = useOutletContext();
     const location = useLocation().hash;
-    const [data, setData] = useState(CartData);
+    const [data, setData] = useState([]);
     useEffect(() => {
         setData(CartData.data);
-    }, [location]);
+    }, [location + count]);
     return (
-        <>
+        <div className="container">
             <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">Seat #</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Product Name</th>
                         <th scope="col">Section</th>
+                        <th scope="col">Row</th>
                         <th scope="col">Seat</th>
                     </tr>
                 </thead>
@@ -22,16 +23,25 @@ function AddToCartTable() {
                     {data.length === 0 || data.length === undefined
                         ? ""
                         : data.map((res) => (
-                              <tr>
-                                  <th scope="row">{res.id}</th>
-                                  <td>{res.name}</td>
-                                  <td>{res.section}</td>
-                                  <td>{res.seat}</td>
+                              <tr key={res.cart_product_id}>
+                                  <td>{res.product_name}</td>
+                                  <td>
+                                      Section{" "}
+                                      {res.venue_section_id === 1
+                                          ? "A"
+                                          : res.venue_section_id === 2
+                                          ? "B"
+                                          : res.venue_section_id === 3
+                                          ? "C"
+                                          : "D"}
+                                  </td>
+                                  <td>Row {res.venue_row}</td>
+                                  <td>Seat {res.venue_seat}</td>
                               </tr>
                           ))}
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }
 

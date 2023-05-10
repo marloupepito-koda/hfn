@@ -19,7 +19,6 @@
             <link href="css/bootstrap-icons.css" rel="stylesheet">
             <link href="css/templatemo-festava-live.css" rel="stylesheet">
     </head>
-
     <style>
   <style
    type="text/css">
@@ -156,6 +155,16 @@
             cursor: default;
         }
 
+        .booth.preferred-seating .booth-fill {
+            fill: rgb(14, 122, 0);
+        }
+        .booth.reserved-seating .booth-fill {
+            fill: rgb(253, 177, 0);
+        }
+        .booth.vip-ringside .booth-fill {
+            fill: rgb(168, 0, 255);
+        }
+
         @media only screen and (max-width: 600px) {
             #svg{
                 margin: -222px 0 0 -450px!important;
@@ -165,7 +174,7 @@
 
 
         </style>
-    <body class="antialiased">
+    <body className="antialiased">
         <div id="app">
          
             </div>

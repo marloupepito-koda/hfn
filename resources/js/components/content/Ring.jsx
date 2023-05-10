@@ -23,11 +23,6 @@ function Ring(props) {
         marginBottom: "30px",
     };
 
-    useEffect(() => {
-        axios.get("/api/get_all_cart_product").then((res) => {
-            console.log(res.data.status);
-        });
-    }, []);
     const handleZoomIn = () => {
         setZoom(zoom + 0.1);
     };

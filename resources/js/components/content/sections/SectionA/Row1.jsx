@@ -1,35 +1,60 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CartData from "../../../add_to_cart/CartData";
-function Row1() {
-    const [data, setData] = useState([]);
+import Tippy from "tippy.js";
+function Row1(props) {
     const [items, setItems] = useState([]);
-    const [random, setRandom] = useState([]);
+    const myRef = useRef([]);
     const navigate = useNavigate();
+
     const addCartSeat = (e) => {
-        const seat = data.find((obj) => obj.id === e.id);
-        console.log(seat);
-        if (seat === undefined) {
-            data.push(e);
-            setData(data);
-            CartData.data = data;
-            setRandom(Math.random());
+        const seatCheck = CartData.data.find(
+            (obj) => obj.cart_product_id === e.cart_product_id
+        );
+        if (seatCheck === undefined) {
+            CartData.data.push(e);
             navigate("#" + Math.floor(Math.random() * 9999));
         } else {
-            const index = data.findIndex((res) => res.id === e.id);
-            data.splice(index, 1);
-            setData(data);
-            CartData.data = data;
-            setRandom(Math.random());
+            const index = CartData.data.findIndex(
+                (res) => res.cart_product_id === e.cart_product_id
+            );
+            CartData.data.splice(index, 1);
             navigate("#" + Math.floor(Math.random() * 9999));
         }
     };
 
-    useEffect(() => {
-        CartData.data = data;
-    }, [random]);
+    function openTooltip(status, data) {
+        const section =
+            data.venue_section_id === 1
+                ? "A"
+                : data.venue_section_id === 2
+                ? "B"
+                : data.venue_section_id === 3
+                ? "C"
+                : "D";
+        const row = data.venue_row;
+        const seat = data.venue_seat;
+        const name = data.product_name;
+        const price = data.price_list;
+        const dataTable =
+            '<table className="table" <span style="color: aqua;"><thead> </thead> <tbody> <tr><th scope="row">Section</th><td>' +
+            section +
+            '</td> </tr> <tr><th scope="row">Row</th><td>' +
+            row +
+            '</td> </tr> <tr><th scope="row">Seat</th><td>' +
+            seat +
+            '</td> </tr> <tr><th scope="row">Name</th><td>' +
+            name +
+            '</td> </td> </tr> <tr><th scope="row">Price</th><td>' +
+            price +
+            "</td> </tr></tbody></table>";
+        Tippy(myRef.current[data.cart_product_id], {
+            content: dataTable,
+            allowHTML: true,
+        });
+    }
 
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < props.data.length + 2; i++) {
         const gapRow1 = 279.8 + i * 5.2 - 1 * 10.4;
         const gapRow2 = 279.7 + i * 5.2 - 1 * 10.4;
         const gapRow3 = 280.1 + i * 5.2 - 1 * 10.4;
@@ -64,27 +89,48 @@ function Row1() {
         const gapColumn14 = 406.6 + 8 * 1;
 
         if (i !== 10 && i !== 11) {
-            const seat = data.find((res) => res.id === i);
+            const aa = i < 11 ? 21 - i - 2 : 21 - i;
+            const seatData = props.data[aa];
+
+            const seatColor = CartData.data.find((res) =>
+                res.cart_product_id !== undefined && seatData !== undefined
+                    ? res.cart_product_id === seatData.cart_product_id
+                    : undefined
+            );
+
+            const taken =
+                seatData !== undefined
+                    ? seatData.quantity === 0
+                        ? "taken"
+                        : ""
+                    : "";
             items.push(
                 <g
+                    ref={(el) =>
+                        (myRef.current[
+                            seatData !== undefined
+                                ? seatData.cart_product_id
+                                : ""
+                        ] = el)
+                    }
+                    onMouseEnter={() => openTooltip(true, seatData)}
+                    onMouseLeave={() => openTooltip(false, seatData)}
                     key={i + Math.random()}
                     onClick={() =>
-                        addCartSeat({
-                            id: i,
-                            name: "General Admission",
-                            section: "A",
-                            row: "1",
-                            seat: i,
-                        })
+                        taken === "taken" ? "" : addCartSeat(seatData)
                     }
-                    id="seat-3827"
-                    className="booth"
+                    id="app-title"
+                    className="booth vip-ringside"
                     section="1"
                 >
                     <polygon
                         value={i}
-                        className={seat === undefined ? "st6 booth-fill" : ""}
-                        fill={seat === undefined ? "#000000" : "#ffff66"}
+                        className={
+                            seatColor === undefined
+                                ? "st6 booth-fill " + taken
+                                : ""
+                        }
+                        fill={seatColor === undefined ? "#000000" : "#ffff66"}
                         stroke="#000000"
                         strokeWidth=".5"
                         strokeMiterlimit="10"
@@ -183,129 +229,6 @@ function Row1() {
                         }
                         id="polygon12149"
                     />
-                    {/* <polygon
-                        className="st19"
-                        points={
-                            gapRow1 +
-                            "," +
-                            gapColumn1 +
-                            " " +
-                            gapRow2 +
-                            "," +
-                            gapColumn2 +
-                            " " +
-                            gapRow3 +
-                            "," +
-                            gapColumn3 +
-                            " " +
-                            gapRow4 +
-                            "," +
-                            gapColumn4 +
-                            " " +
-                            gapRow5 +
-                            "," +
-                            gapColumn4 +
-                            " " +
-                            gapRow6 +
-                            "," +
-                            gapColumn3 +
-                            " " +
-                            gapRow7 +
-                            "," +
-                            gapColumn2 +
-                            " " +
-                            gapRow7 +
-                            "," +
-                            gapColumn5 +
-                            " " +
-                            gapRow6 +
-                            "," +
-                            gapColumn6 +
-                            " " +
-                            gapRow8 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow9 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow10 +
-                            "," +
-                            gapColumn8 +
-                            " " +
-                            gapRow10 +
-                            "," +
-                            gapColumn9 +
-                            " " +
-                            gapRow11 +
-                            "," +
-                            gapColumn10 +
-                            " " +
-                            gapRow12 +
-                            "," +
-                            gapColumn11 +
-                            " " +
-                            gapRow13 +
-                            "," +
-                            gapColumn12 +
-                            " " +
-                            gapRow14 +
-                            "," +
-                            gapColumn11 +
-                            " " +
-                            gapRow15 +
-                            "," +
-                            gapColumn10 +
-                            " " +
-                            gapRow2 +
-                            "," +
-                            gapColumn13 +
-                            " " +
-                            gapRow2 +
-                            "," +
-                            gapColumn8 +
-                            " " +
-                            gapRow15 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow16 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow3 +
-                            "," +
-                            gapColumn6
-                        }
-                        id="polygon12151"
-                    />
-                    <polyline
-                        className="st20"
-                        points={
-                            gapRow8 +
-                            "," +
-                            gapColumn7 +
-                            " " +
-                            gapRow5 +
-                            "," +
-                            gapColumn8 +
-                            " " +
-                            gapRow17 +
-                            "," +
-                            gapColumn14 +
-                            " " +
-                            gapRow4 +
-                            "," +
-                            gapColumn14 +
-                            " " +
-                            gapRow16 +
-                            "," +
-                            gapColumn8 +
-                            " "
-                        }
-                        id="polyline12153"
-                    /> */}
                 </g>
             );
         }
