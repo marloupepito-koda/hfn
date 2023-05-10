@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import { useNavigate, useLocation } from "react-router-dom";
 function CheckoutPaymentMethods(props) {
     const [method, setMethod] = useState("credits");
     const [amount, setAmount] = useState(0);
+    const [disable, setDisabled] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation().hash;
     const [paymentCard, setPaymentCard] = useState({
-        cart: props.cartData,
         fullname: "",
         email: "",
         where_find: "",
@@ -16,7 +18,6 @@ function CheckoutPaymentMethods(props) {
         discount: props.discount,
     });
     const [paymentCash, setPaymentCash] = useState({
-        cart: props.cartData,
         fullname: "",
         email: "",
         tenders: 0,
@@ -29,7 +30,6 @@ function CheckoutPaymentMethods(props) {
     });
 
     const [paymentCheck, setPaymentCheck] = useState({
-        cart: props.cartData,
         fullname: "",
         email: "",
         check_info: "",
@@ -77,17 +77,30 @@ function CheckoutPaymentMethods(props) {
 
     const submitPayment = (e) => {
         e.preventDefault();
+        setDisabled(true);
         if (method === "credits") {
             axios.post("/api/send_place_orders", paymentCard).then((res) => {
-                console.log(res.data.status);
+                console.log(paymentCard);
+                if (res.data.status === "success") {
+                    window.location.href = "/";
+                    //setDisabled(false);
+                }
             });
         } else if (method === "cash") {
             axios.post("/api/send_place_orders", paymentCash).then((res) => {
-                console.log(res.data.status);
+                console.log(paymentCash);
+                if (res.data.status === "success") {
+                    window.location.href = "/";
+                    //setDisabled(false);
+                }
             });
         } else {
             axios.post("/api/send_place_orders", paymentCheck).then((res) => {
-                console.log(res.data.status);
+                console.log(paymentCheck);
+                if (res.data.status === "success") {
+                    window.location.href = "/";
+                    //setDisabled(false);
+                }
             });
         }
     };
@@ -260,6 +273,7 @@ function CheckoutPaymentMethods(props) {
                 </div>
                 <div className="col-md-3  offset-md-5 mt-4 mb-5">
                     <input
+                        disabled={disable}
                         type="submit"
                         value="Place Order"
                         className="btn btn-primary btn-lg"

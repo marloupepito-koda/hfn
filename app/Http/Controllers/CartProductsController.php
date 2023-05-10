@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Models\CartProducts;
+use App\Models\CartOrderedProducts;
 use App\Models\CartOrders;
 
 class CartProductsController extends Controller
@@ -49,42 +50,11 @@ class CartProductsController extends Controller
                     
                if ($request->data[$i]['product_name'] !== 'General Admission No Seat') {
 
-                    // $price_offset = 0;
-
-                    //  if ($request->data[$i]['price_early'] && !$request->data[$i]['price_early_ended']) {
-                    //      $price_offset = max(0, ($request->data[$i]['price_list'] - $request->data[$i]['price_early'] ));
-                    // }
-
-
-                    //   function generateRandomString()
-                    //      {
-                    //           $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    //           $randomString = '';
-                    //           for ($i = 0; $i < 32; $i++) {
-                    //                $randomString .= $characters[rand(0, strlen($characters) - 1)];
-                    //           }
-                    //           return $randomString;
-                    //      }
-                    // $token_try = generateRandomString();
-
-                    CartProducts::where('cart_product_id', $request->data[$i]['cart_product_id'])
+                     CartProducts::where('cart_product_id', $request->data[$i]['cart_product_id'])
                          ->update([
                               'quantity' => 0
                          ]);
 
-                         //   CartOrderedProducts::create([
-                         //      'client_id' => $this->client_id,
-                         //      'cart_product_id' =>  $request->data[$i]['cart_product_id'],
-                         //      'token' => $token_try,
-                         //      'cart_order_id' => $_SESSION['cart_order_id'],
-                         //      'quantity' => $request->data[$i]['quantity'],
-                         //      'price' => $request->data[$i]['price_list'],
-                         //      'price_offset' => $price_offset,
-                         //      // 'code' => $code,
-                         //      // 'cart_product_options' => $option_id,
-                         //      // 'expires' => date('Y-m-d H:i:s', $expiration),
-                         //      // 'date_submitted' => \Carbon\Carbon::now(),
-                         // ]);
                }
 
           }
@@ -97,7 +67,7 @@ class CartProductsController extends Controller
              
 
                $datetime = new DateTime($request->date);
-               $datetime->modify('+2 minutes');
+               $datetime->modify('+10 minutes');
                session(['session' => $datetime->format('Y-m-d H:i:s')]);
           }
 

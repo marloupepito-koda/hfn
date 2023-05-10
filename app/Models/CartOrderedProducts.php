@@ -59,37 +59,34 @@ class CartOrderedProducts extends Model
         //      if ($data->cart[$i]['price_early'] && !$data->cart[$i]['price_early_ended']) {
         //             $price_offset = max(0, ($data->cart[$i]['price_list'] - $data->cart[$i]['price_early']));
         //         }
-
         //         if($data->cart[$i]['cart_product_id'] !== 'no seats'){
-        //              CartOrderedProducts::create([
-        //                 'client_id' => $client_id,
-        //                 'cart_product_id' => $data->cart[$i]['cart_product_id'],// done
-        //                 'token' => $token, //done
-        //                 'cart_order_id' => null, //cart_order_id
-        //                 'quantity' => $data->cart[$i]['quantity'], // quantity
-        //                 'price' => $data->cart[$i]['price_list'], // price_list
-        //                 'price_group' => null,
-        //                 'price_offset' => $price_offset, //
-        //                 'code' => null, //code
-        //                 'discount_offset' => null,
-        //                 'cart_product_options' => null, //cart_product_options
-        //                 'cart_coupon_id' => null,
-        //                 'date_submitted' => null,
+        //              $this->CartOrderedProducts::create([
+        //                 'client_id' => $this->client_id,
+        //                 'cart_product_id' => $data->cart[$i]['cart_product_id'],
+        //                 'token' => $token, 
+        //                 'cart_order_id' => 81415,
+        //                 'quantity' => $data->cart[$i]['quantity'], 
+        //                 'price' => $data->cart[$i]['price_list'], 
+        //                 'price_group' => 0,
+        //                 'price_offset' => $price_offset,
+        //                 'code' => null, 
+        //                 'discount_offset' => 0.00,
+        //                 'cart_product_options' => 0, 
+        //                 'cart_coupon_id' => 0,
+        //                 'date_submitted' => '2023-05-08 23:31:32',
         //                 'team_members' => null,
-        //                 'units' => null,
-        //                 'donation' => null,
-        //                 'printed_fee' => null,
-        //                 'printed_fee_type' => null,
-        //                 'first_name' => null,
-        //                 'last_name' => null,
-        //                 // 'expires' => null, // expires
-        //                 // 'table_number' => null, //NOW()
+        //                 'units' => 0,
+        //                 'donation' => 0.00,
+        //                 'printed_fee' => 0,
+        //                 'printed_fee_type' => 0,
+        //                 'first_name' => $data->fullname,
+        //                 'last_name' => 'waaaa',
+        //                 'expires' => '2023-05-08 23:42:35',
+        //                 'table_number' => 0,
         //             ]);
         //         }
-            
         // }
        
-
 
         // CartTicketCodes::create([
         //     'cart_ordered_product_id' => null,//cart_ordered_product_id
