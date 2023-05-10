@@ -9,7 +9,6 @@ function CheckoutTable() {
     const [count, setCount] = useOutletContext();
     useEffect(() => {
         setAddCart(CartData.data);
-        console.log("waaaasss", CartData.data);
     }, [count]);
 
     const subTotal = CartData.data.reduce((accumulator, currentValue) => {

@@ -130,10 +130,7 @@
             fill: yellow !important;
         }
 
-        .taken {
-            /*fill: grey !important;*/
-            opacity: 0.3 !important;
-        }
+      
 
         .booth-fill:hover {
             fill: #ccc;
@@ -165,6 +162,10 @@
             fill: rgb(168, 0, 255);
         }
 
+          .taken {
+           fill: grey !important;
+            opacity: 0.2 !important;
+        }
         @media only screen and (max-width: 600px) {
             #svg{
                 margin: -222px 0 0 -450px!important;

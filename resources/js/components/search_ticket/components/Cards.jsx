@@ -1,13 +1,23 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import SearchTicketTable from "./Table";
 function CardSearchTicket() {
     const [search, setSearch] = useState("");
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState([]);
+    const [status, setStatus] = useState("");
     const searchTicket = (e) => {
         e.preventDefault();
-
+        setStatus("Loading...");
+        axios.get("/api/search_ticket_code/" + search).then((res) => {
+            setValue(res.data.status);
+            console.log(res.data.status);
+            if (res.data.status.length !== 0) {
+                setStatus("");
+            } else {
+                setStatus("No results!");
+            }
+        });
         const found = "1139635697" === search ? true : false;
-        setValue(found);
     };
 
     return (
@@ -39,11 +49,13 @@ function CardSearchTicket() {
                         </div>
                     </form>
                     <div className="col-md-12 mt-5">
-                        {value === true ? (
-                            <SearchTicketTable />
+                        {/* {value.length !== 0 ? (
+                            value.map((res) => (
+                                <SearchTicketTable data={value} />
+                            ))
                         ) : (
-                            <h3>No Results Found!</h3>
-                        )}
+                            <h3>{status}</h3>
+                        )} */}
                     </div>
                 </div>
             </div>

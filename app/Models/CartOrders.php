@@ -13,6 +13,7 @@ class CartOrders extends Model
     protected $table = 'cart_orders';
 
       protected $fillable = [
+        'cart_order_id',
         'client_id',
         'invoice_number',
         'cart_customer_id',

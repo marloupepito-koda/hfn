@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-function SearchTicketTable() {
+function SearchTicketTable(props) {
+    console.log("props", props.data);
     return (
         <table className="table table-striped">
             <thead>
@@ -13,51 +14,27 @@ function SearchTicketTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>General Admission No Seat</td>
-                    <td>1139635697</td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Upgrade
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Release
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>General Admission No Seat</td>
-                    <td>1139635697</td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Upgrade
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Release
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>General Admission No Seat</td>
-                    <td>1139635697</td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Upgrade
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" className="btn btn-success">
-                            Release
-                        </button>
-                    </td>
-                </tr>
+                {props.data.map((res) => (
+                    <tr>
+                        <th scope="row">{res.cart_order_id}</th>
+                        <td>
+                            {res.cart_product_id === 0
+                                ? "General Admission No Seat"
+                                : ""}
+                        </td>
+                        <td>{res.code}</td>
+                        <td>
+                            <button type="button" className="btn btn-success">
+                                Upgrade
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" className="btn btn-success">
+                                Release
+                            </button>
+                        </td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     );

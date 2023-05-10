@@ -25,6 +25,7 @@ Route::patch('/end_session', [CartProductsController::class, 'end_session']);
 
 
 Route::post('/send_place_orders', [CartOrderedProductsController::class, 'send_place_orders']);
+Route::get('/search_ticket_code/{search}', [CartOrderedProductsController::class, 'search_ticket_code']);
 // Route::middleware(['web'])->group(function () {
 // }); 
 

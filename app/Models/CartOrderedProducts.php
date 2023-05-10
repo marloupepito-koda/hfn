@@ -50,6 +50,12 @@ class CartOrderedProducts extends Model
         return $this->hasOne(CartTicketCodes::class, 'cart_ticket_code_id');
     }
 
+    
+     public function searchTickets($search){
+          $results = CartOrderedProducts::where('code', '=', $search)->get();
+          return $results;
+     }
+
 
     public function checkOutSeats($data,$token)
     {
