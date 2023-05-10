@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CartOrderedProducts;
 
 class CartOrderedProductsController extends Controller
 {
      public function send_place_orders(Request $request)
      {
+          $cartOrderProducts = new CartOrderedProducts;
           function generateRandomString()
           {
                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -17,13 +19,12 @@ class CartOrderedProductsController extends Controller
                }
                return $randomString;
           }
-          $randomString = generateRandomString();
+          $randomToken = generateRandomString();
 
-
-
+          $aa = $cartOrderProducts->checkOutSeats($request,$randomToken);
           $data = session('create_checkout');
           return response()->json([
-               'status' => $randomString,
+               'status' => $aa,
           ]);
      }
 

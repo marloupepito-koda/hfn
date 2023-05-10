@@ -5,6 +5,7 @@ function CheckoutPaymentMethods(props) {
     const [method, setMethod] = useState("credits");
     const [amount, setAmount] = useState(0);
     const [paymentCard, setPaymentCard] = useState({
+        cart: props.cartData,
         fullname: "",
         email: "",
         where_find: "",
@@ -15,6 +16,7 @@ function CheckoutPaymentMethods(props) {
         discount: props.discount,
     });
     const [paymentCash, setPaymentCash] = useState({
+        cart: props.cartData,
         fullname: "",
         email: "",
         tenders: 0,
@@ -27,6 +29,7 @@ function CheckoutPaymentMethods(props) {
     });
 
     const [paymentCheck, setPaymentCheck] = useState({
+        cart: props.cartData,
         fullname: "",
         email: "",
         check_info: "",

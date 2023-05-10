@@ -11,6 +11,7 @@ function AddToCartNoSeats() {
     const [disable, setDisabled] = useState(true);
     const navigate = useNavigate();
     const goToCheckOut = () => {
+        console.log(CartData.data);
         axios
             .patch("/create_checkout", {
                 data: CartData.data,
