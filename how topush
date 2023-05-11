@@ -4,5 +4,8 @@ import { useLocation } from "react-router-dom";
 
 
 
+    @viteReactRefresh
+            @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+            
         console.log("waaass", location);

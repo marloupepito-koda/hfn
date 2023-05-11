@@ -8,11 +8,9 @@ function AddToCartTopNavbar() {
         setCartCount(CartData.data.length);
     }, [location]);
     return (
-        <nav className="navbar navbar-expand-lg bg-black">
+        <nav className="navbar navbar-expand-lg bg-black fixed-top">
             <div className="container">
-                <Link className="navbar-brand" to="/">
-                    HFN Live
-                </Link>
+                <a className="navbar-brand">HFN Live</a>
 
                 {/* <a
                     href="ticket.html"
@@ -46,15 +44,12 @@ function AddToCartTopNavbar() {
                         </li>
 
                         <li className="nav-item">
-                            <Link
-                                className="nav-link click-scroll"
-                                to="/checkout"
-                            >
+                            <a className="nav-link click-scroll">
                                 Cart&nbsp;
                                 <span className="badge bg-success">
                                     {cartCount}
                                 </span>
-                            </Link>
+                            </a>
                         </li>
                         <li className="nav-item">
                             <a

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartOrderedProductsController;
 use App\Http\Controllers\CartOrdersController;
 use App\Http\Controllers\CartProductsController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,9 +18,18 @@ use App\Http\Controllers\CartProductsController;
 */
 
 
-Route::get('/get_all_cart_product', [CartProductsController::class, 'get_all_cart_product']);
-//  Route::get('/get_all_seats', 'CartOrderedProductsController@get_all_seats');
- 
+Route::get('/get_seats', [CartProductsController::class, 'get_seats']);
+Route::patch('/create_checkout', [CartProductsController::class, 'create_checkout']);
+Route::patch('/session', [CartProductsController::class, 'session']);
+Route::patch('/end_session', [CartProductsController::class, 'end_session']);
+
+
+Route::post('/send_place_orders', [CartOrderedProductsController::class, 'send_place_orders']);
+Route::get('/search_ticket_code/{search}', [CartOrderedProductsController::class, 'search_ticket_code']);
+// Route::middleware(['web'])->group(function () {
+// }); 
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

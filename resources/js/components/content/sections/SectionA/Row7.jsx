@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CartData from "../../../add_to_cart/CartData";
+import Tippy from "tippy.js";
 function Row7(props) {
     const [items, setItems] = useState([]);
+    const myRef = useRef([]);
     const navigate = useNavigate();
 
     const addCartSeat = (e) => {
@@ -20,6 +22,37 @@ function Row7(props) {
             navigate("#" + Math.floor(Math.random() * 9999));
         }
     };
+
+    function openTooltip(status, data) {
+        const section =
+            data.venue_section_id === 1
+                ? "A"
+                : data.venue_section_id === 2
+                ? "B"
+                : data.venue_section_id === 3
+                ? "C"
+                : "D";
+        const row = data.venue_row;
+        const seat = data.venue_seat;
+        const name = data.product_name;
+        const price = data.price_list;
+        const dataTable =
+            '<table className="table" <span style="color: aqua;"><thead> </thead> <tbody> <tr><th scope="row">Section</th><td>' +
+            section +
+            '</td> </tr> <tr><th scope="row">Row</th><td>' +
+            row +
+            '</td> </tr> <tr><th scope="row">Seat</th><td>' +
+            seat +
+            '</td> </tr> <tr><th scope="row">Name</th><td>' +
+            name +
+            '</td> </td> </tr> <tr><th scope="row">Price</th><td>' +
+            price +
+            "</td> </tr></tbody></table>";
+        Tippy(myRef.current[data.cart_product_id], {
+            content: dataTable,
+            allowHTML: true,
+        });
+    }
 
     for (let i = 0; i < 30; i++) {
         const gapRow1 = 279.8 + i * 5.2 - 3 * 10.4;
@@ -59,15 +92,27 @@ function Row7(props) {
             const aa = i < 15 ? 29 - i - 2 : 29 - i;
             const seatData = props.data[aa];
 
-            const seatColor = CartData.data.find(
-                (res) => res.cart_product_id === seatData.cart_product_id
+            const seatColor = CartData.data.find((res) =>
+                res.cart_product_id !== undefined && seatData !== undefined
+                    ? res.cart_product_id === seatData.cart_product_id
+                    : undefined
             );
+
             items.push(
                 <g
+                    ref={(el) =>
+                        (myRef.current[
+                            seatData !== undefined
+                                ? seatData.cart_product_id
+                                : ""
+                        ] = el)
+                    }
+                    onMouseEnter={() => openTooltip(true, seatData)}
+                    onMouseLeave={() => openTooltip(false, seatData)}
                     key={i + Math.random()}
                     onClick={() => addCartSeat(seatData)}
                     id="seat-3827"
-                    className="booth"
+                    className="booth reserved-seating"
                     section="1"
                 >
                     <polygon

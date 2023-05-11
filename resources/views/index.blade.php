@@ -9,8 +9,13 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-            @viteReactRefresh
-            @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}" defer></script>
+  
         <!-- Styles -->
            <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +24,6 @@
             <link href="css/bootstrap-icons.css" rel="stylesheet">
             <link href="css/templatemo-festava-live.css" rel="stylesheet">
     </head>
-
     <style>
   <style
    type="text/css">
@@ -131,10 +135,7 @@
             fill: yellow !important;
         }
 
-        .taken {
-            /*fill: grey !important;*/
-            opacity: 0.3 !important;
-        }
+      
 
         .booth-fill:hover {
             fill: #ccc;
@@ -156,41 +157,30 @@
             cursor: default;
         }
 
+        .booth.preferred-seating .booth-fill {
+            fill: rgb(14, 122, 0);
+        }
+        .booth.reserved-seating .booth-fill {
+            fill: rgb(253, 177, 0);
+        }
+        .booth.vip-ringside .booth-fill {
+            fill: rgb(168, 0, 255);
+        }
+
+          .taken {
+           fill: grey !important;
+            opacity: 0.2 !important;
+        }
         @media only screen and (max-width: 600px) {
             #svg{
                 margin: -222px 0 0 -450px!important;
             }
         }
-
-           .tooltip {
-      position: relative;
-      display: inline-block;
-      border-bottom: 1px dotted black;
-    }
-
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 120px;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      margin-left: -60px;
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-    }
 </style>
 
 
         </style>
-    <body class="antialiased">
+    <body className="antialiased">
         <div id="app">
          
             </div>
