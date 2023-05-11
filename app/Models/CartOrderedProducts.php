@@ -14,7 +14,6 @@ class CartOrderedProducts extends Model
     use HasFactory;
     protected $table = 'cart_ordered_products';
     protected $fillable = [
-        'cart_ordered_product_id',
         'client_id',
         'cart_product_id',
         'token',

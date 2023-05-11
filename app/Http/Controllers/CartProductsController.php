@@ -62,7 +62,9 @@ class CartProductsController extends Controller
                }
                return $randomString;
           }
-                    $token = session(['token' =>  generateRandomString()]);
+                    session(['token' =>  generateRandomString()]);
+
+                    $token = session('token');                  
                        CartOrders::insert([
                          'client_id' => $this->client_id,
                          'invoice_number' => -1,
@@ -120,8 +122,8 @@ class CartProductsController extends Controller
                          'shipping_tracking_number' => '',
                          'shipping_type_id' => 'null',
                          'shipping_type' => 'null',
-                         'ssl_invoice_number' => 'ssrxa0b6ibuvlk15hdsk6i2252bu05g',
-                         'token' =>intval($token),
+                         'ssl_invoice_number' => '',
+                         'token' =>$token,
                          'ssl_approval_code' => 'null',
                          // 'parent_cart_category_id' => 'null',
                          'date_shipped' => '2023-05-08 23:31:31',
@@ -183,7 +185,7 @@ class CartProductsController extends Controller
 
                if ($request->data[$i]['product_name'] !== 'General Admission No Seat') {
                     $token = session('token');
-                    $cartOrders = CartOrders::where('token','=',session('token'))->first();
+                    $cartOrders = CartOrders::where('token','=',$token)->first();
 
 
                         $code = mt_rand(1000000000, 9999999999);
@@ -191,7 +193,7 @@ class CartProductsController extends Controller
                          'client_id' => $this->client_id,
                          'cart_product_id' => $request->data[$i]['cart_product_id'],
                          'token' => $token, 
-                         'cart_order_id' => 33333,
+                         'cart_order_id' => $cartOrders->cart_order_id,
                          'quantity' => $request->data[$i]['quantity'], 
                          'price' => $request->data[$i]['price_list'], 
                          'price_group' => 0,
@@ -220,7 +222,6 @@ class CartProductsController extends Controller
                                    'product_id' => $request->data[$i]['cart_product_id'],
                                    'code' => $code,
                                    'token' => $token,
-                                   // 'status' => 'Pending',
                                    'date_redeemed' => date("Y-m-d H:i:s")
                               ]);
                          }
@@ -230,6 +231,8 @@ class CartProductsController extends Controller
                               'quantity' => 0
                          ]);
 
+               }else{
+                    //no seats
                }
 
           }
@@ -237,7 +240,7 @@ class CartProductsController extends Controller
 
           session(['create_checkout' => $request->data]);
           return response()->json([
-               'status' => session('create_checkout'),
+               'status' => $token,
           ]);
 
      }

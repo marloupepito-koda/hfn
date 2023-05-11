@@ -1,7 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import CartData from "../../../add_to_cart/CartData";
+import Tippy from "tippy.js";
 
-function Row4() {
-    const items = [];
+function Row4(props) {
+    const [items, setItems] = useState([]);
+    const myRef = useRef([]);
+    const navigate = useNavigate();
+
+    const addCartSeat = (e) => {
+        const seatCheck = CartData.data.find(
+            (obj) => obj.cart_product_id === e.cart_product_id
+        );
+        if (seatCheck === undefined) {
+            CartData.data.push(e);
+            navigate("#" + Math.floor(Math.random() * 9999));
+        } else {
+            const index = CartData.data.findIndex(
+                (res) => res.cart_product_id === e.cart_product_id
+            );
+            CartData.data.splice(index, 1);
+            navigate("#" + Math.floor(Math.random() * 9999));
+        }
+    };
+
+    function openTooltip(status, data) {
+        const section =
+            data.venue_section_id === 1
+                ? "A"
+                : data.venue_section_id === 2
+                ? "B"
+                : data.venue_section_id === 3
+                ? "C"
+                : "D";
+        const row = data.venue_row;
+        const seat = data.venue_seat;
+        const name = data.product_name;
+        const price = data.price_list;
+        const dataTable =
+            '<table className="table" <span style="color: aqua;"><thead> </thead> <tbody> <tr><th scope="row">Section</th><td>' +
+            section +
+            '</td> </tr> <tr><th scope="row">Row</th><td>' +
+            row +
+            '</td> </tr> <tr><th scope="row">Seat</th><td>' +
+            seat +
+            '</td> </tr> <tr><th scope="row">Name</th><td>' +
+            name +
+            '</td> </td> </tr> <tr><th scope="row">Price</th><td>' +
+            price +
+            "</td> </tr></tbody></table>";
+        Tippy(myRef.current[data.cart_product_id], {
+            content: dataTable,
+            allowHTML: true,
+        });
+    }
 
     for (let i = 0; i < 22; i++) {
         const gapRow1 = 396.7 + 8 + 8 + 8;
@@ -52,8 +104,40 @@ function Row4() {
         const gapColumn17 = 293.2 + i * 5.2 - 31.2;
 
         if (i !== 10 && i !== 11) {
+            const aa = i < 11 ? i : i - 2;
+            const seatData = props.data[aa];
+
+            const seatColor = CartData.data.find((res) =>
+                res.cart_product_id !== undefined && seatData !== undefined
+                    ? res.cart_product_id === seatData.cart_product_id
+                    : undefined
+            );
+
+            const taken =
+                seatData !== undefined
+                    ? seatData.quantity === 0
+                        ? "taken"
+                        : ""
+                    : "";
             items.push(
-                <g key={i} id="seat-4206" className="booth" section="1">
+                <g
+                    ref={(el) =>
+                        (myRef.current[
+                            seatData !== undefined
+                                ? seatData.cart_product_id
+                                : ""
+                        ] = el)
+                    }
+                    onMouseEnter={() => openTooltip(true, seatData)}
+                    onMouseLeave={() => openTooltip(false, seatData)}
+                    key={i + Math.random()}
+                    onClick={() =>
+                        taken === "taken" ? "" : addCartSeat(seatData)
+                    }
+                    id="app-title"
+                    className="booth  preferred-seating"
+                    section="1"
+                >
                     <polygon
                         className="st6 booth-fill"
                         fill="#FFFFFF"

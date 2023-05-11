@@ -91,7 +91,7 @@ function CheckoutTable() {
                                     type="number"
                                     value={inputValue}
                                     onInput={handleInput}
-                                    class="form-control"
+                                    className="form-control"
                                 />
                             </th>
                         </tr>

@@ -52,10 +52,10 @@ const TimerSession = (props) => {
     return (
         <div>
             <br />
-            <div class="container">
+            <div className="container">
                 <button
                     type="button"
-                    class="btn btn-dark btn-lg "
+                    className="btn btn-dark btn-lg "
                     style={{
                         position: "fixed",
                         top: "30%",

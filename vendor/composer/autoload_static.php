@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd
+class ComposerStaticInitcd524e5700acefad9d2c46155fb51357
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -342,8 +342,8 @@ class ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -517,6 +517,10 @@ class ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\CartOrderedProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartOrderedProductsController.php',
+        'App\\Http\\Controllers\\CartOrdersController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartOrdersController.php',
+        'App\\Http\\Controllers\\CartProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartProductsController.php',
+        'App\\Http\\Controllers\\CartTicketCodesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartTicketCodesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -528,6 +532,11 @@ class ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Mail\\SeatsReservation' => __DIR__ . '/../..' . '/app/Mail/SeatsReservation.php',
+        'App\\Models\\CartOrderedProducts' => __DIR__ . '/../..' . '/app/Models/CartOrderedProducts.php',
+        'App\\Models\\CartOrders' => __DIR__ . '/../..' . '/app/Models/CartOrders.php',
+        'App\\Models\\CartProducts' => __DIR__ . '/../..' . '/app/Models/CartProducts.php',
+        'App\\Models\\CartTicketCodes' => __DIR__ . '/../..' . '/app/Models/CartTicketCodes.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -6313,10 +6322,10 @@ class ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbecb8dbb00afb5313d29199f2d657ffd::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitcd524e5700acefad9d2c46155fb51357::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitcd524e5700acefad9d2c46155fb51357::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitcd524e5700acefad9d2c46155fb51357::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitcd524e5700acefad9d2c46155fb51357::$classMap;
 
         }, null, ClassLoader::class);
     }
